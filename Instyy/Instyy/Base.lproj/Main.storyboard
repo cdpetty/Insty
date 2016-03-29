@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -48,17 +48,17 @@
                     <connections>
                         <outlet property="passwordField" destination="VIm-oJ-tmS" id="Edq-8F-nqc"/>
                         <outlet property="usernameField" destination="9MR-vH-tTA" id="UNs-gk-bPe"/>
-                        <segue destination="6YU-Tw-cpg" kind="presentation" identifier="loginSegue" id="vY5-FK-BpS"/>
+                        <segue destination="HyM-g0-IwT" kind="presentation" identifier="loginSegue" id="vY5-FK-BpS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="304.5" y="349.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Instagram Home View Controller-->
         <scene sceneID="HOm-xk-GWL">
             <objects>
-                <viewController id="6YU-Tw-cpg" sceneMemberID="viewController">
+                <viewController id="6YU-Tw-cpg" customClass="InstagramHomeViewController" customModule="Instyy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="72f-lL-Ip5"/>
                         <viewControllerLayoutGuide type="bottom" id="cVx-er-NsP"/>
@@ -66,13 +66,118 @@
                     <view key="view" contentMode="scaleToFill" id="7os-zY-f5S">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="PhotoCell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="209" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zz0-us-RdE">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhotoCell" rowHeight="209" id="3GO-jb-Q2e" customClass="PhotoTableViewCell" customModule="Instyy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="375" height="209"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3GO-jb-Q2e" id="1bE-wM-6XQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="208.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVO-XX-hrT">
+                                                    <rect key="frame" x="26" y="136" width="327" height="64.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cbw-Ju-L4X" customClass="PFImageView">
+                                                    <rect key="frame" x="67" y="0.0" width="240" height="128"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="captionLabel" destination="QVO-XX-hrT" id="9r4-VT-ERY"/>
+                                            <outlet property="photoImageView" destination="cbw-Ju-L4X" id="T7U-10-lke"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="yPr-Oi-4Y0">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="l9j-eh-ifH">
+                            <connections>
+                                <action selector="onLogout:" destination="6YU-Tw-cpg" id="vF1-Ws-7cF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="+" id="YB1-6e-8ig">
+                            <connections>
+                                <segue destination="gR3-CM-HGi" kind="show" id="c79-Z4-GBv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="tableView" destination="Zz0-us-RdE" id="Iuu-nY-TkO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mLZ-HJ-Zb1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="803.5" y="349.5"/>
+            <point key="canvasLocation" x="1724.5" y="349.5"/>
+        </scene>
+        <!--New Post View Controller-->
+        <scene sceneID="4b4-zV-bxZ">
+            <objects>
+                <viewController id="gR3-CM-HGi" customClass="NewPostViewController" customModule="Instyy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xJb-ee-Wz3"/>
+                        <viewControllerLayoutGuide type="bottom" id="z9d-gC-GtP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kub-e8-HxO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dy7-po-arG" userLabel="Select View">
+                                <rect key="frame" x="55" y="153" width="252" height="243"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cx0-Ab-NnO">
+                                <rect key="frame" x="55" y="452" width="258" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18T-HX-gcX">
+                                <rect key="frame" x="165" y="532" width="45" height="30"/>
+                                <state key="normal" title="Finish!"/>
+                                <connections>
+                                    <action selector="onSubmit:" destination="gR3-CM-HGi" eventType="touchUpInside" id="xGG-kW-efD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="captionField" destination="Cx0-Ab-NnO" id="Ka6-dw-I4s"/>
+                        <outlet property="selectView" destination="Dy7-po-arG" id="CzZ-a8-KMr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qog-B3-iqU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2198.5" y="349.5"/>
+        </scene>
+        <!--InstaNavigationController-->
+        <scene sceneID="H3k-wE-Omz">
+            <objects>
+                <navigationController storyboardIdentifier="InstaNavigationController" title="InstaNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="HyM-g0-IwT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fee-ph-oOj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6YU-Tw-cpg" kind="relationship" relationship="rootViewController" id="j3I-Fi-d5Q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2x2-sN-hXA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1137.5" y="349.5"/>
         </scene>
     </scenes>
 </document>
